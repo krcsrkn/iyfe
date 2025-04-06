@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IYFE — Feel Without a Name</title>
   <style>
     body {
@@ -14,13 +14,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       padding: 20px;
       text-align: center;
     }
     h1 {
       font-size: 3em;
+      margin-top: 1em;
       margin-bottom: 0.2em;
     }
     p {
@@ -50,6 +51,19 @@
       max-width: 500px;
       width: 100%;
     }
+    .echo-response {
+      margin-top: 2em;
+      padding: 1em;
+      font-style: italic;
+      color: #9dd;
+      max-width: 500px;
+      display: none;
+      animation: fadeIn 1s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -57,9 +71,9 @@
   <p>Where your feelings are heard — without your name.</p>
 
   <div class="form-container">
-    <form action="https://formspree.io/f/movepeqr" method="POST">
-      <textarea name="message" rows="5" placeholder="What are you feeling right now?" required></textarea>
-      <select name="emotion">
+    <form id="echoForm">
+      <textarea name="message" id="message" rows="5" placeholder="What are you feeling right now?" required></textarea>
+      <select name="emotion" id="emotion">
         <option value="💔">💔 Heartbreak</option>
         <option value="🧠">🧠 Overthinking</option>
         <option value="💌">💌 Love</option>
@@ -68,10 +82,54 @@
       </select>
       <button type="submit">Send Echo</button>
     </form>
+    <div class="echo-response" id="echoReply"></div>
   </div>
 
   <p style="margin-top: 4em; font-size: 0.9em; color: #888;">
     This is a safe, ego-free space. No likes. No profiles. Just pure human feeling.
   </p>
+
+  <script>
+    const form = document.getElementById('echoForm');
+    const echoBox = document.getElementById('echoReply');
+
+    const responses = {
+      "💔": [
+        "Your absence would echo in ways you can’t yet see.",
+        "Even the shattered pieces of you are still worthy of light.",
+        "Pain is proof that you dared to love."
+      ],
+      "🧠": [
+        "Your thoughts are loud, but your soul is louder.",
+        "You don’t have to solve everything tonight.",
+        "Let go. Not of truth — just of tension."
+      ],
+      "💌": [
+        "Your heart speaks in a language the universe understands.",
+        "Love isn’t weakness. It’s your rebellion against emptiness.",
+        "To feel deeply is your gift — not your flaw."
+      ],
+      "✨": [
+        "You are proof that even quiet hope has power.",
+        "There’s light in you others haven’t seen yet.",
+        "Keep going. Soft doesn’t mean small."
+      ],
+      "🔥": [
+        "Your fire doesn’t make you dangerous — it makes you real.",
+        "Burning isn’t breaking. It’s becoming.",
+        "Even rage can be holy, if it leads to change."
+      ]
+    };
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const emotion = document.getElementById('emotion').value;
+      const replyOptions = responses[emotion];
+      const selected = replyOptions[Math.floor(Math.random() * replyOptions.length)];
+      echoBox.textContent = `"${selected}"`;
+      echoBox.style.display = 'block';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
