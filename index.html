@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IYFE — Feel Without a Name</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+    }
+    p {
+      font-size: 1.2em;
+      color: #ccc;
+      margin-bottom: 2em;
+    }
+    input, select, textarea, button {
+      font-size: 1em;
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #666;
+    }
+    .form-container {
+      max-width: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>IYFE</h1>
+  <p>Where your feelings are heard — without your name.</p>
+
+  <div class="form-container">
+    <form action="https://formspree.io/f/movepeqr" method="POST">
+      <textarea name="message" rows="5" placeholder="What are you feeling right now?" required></textarea>
+      <select name="emotion">
+        <option value="💔">💔 Heartbreak</option>
+        <option value="🧠">🧠 Overthinking</option>
+        <option value="💌">💌 Love</option>
+        <option value="✨">✨ Hope</option>
+        <option value="🔥">🔥 Rage</option>
+      </select>
+      <button type="submit">Send Echo</button>
+    </form>
+  </div>
+
+  <p style="margin-top: 4em; font-size: 0.9em; color: #888;">
+    This is a safe, ego-free space. No likes. No profiles. Just pure human feeling.
+  </p>
+</body>
+</html>
